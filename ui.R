@@ -1,12 +1,12 @@
 material_page(
-  title = "",
+  title = "Bienvenidos a Inmobiliaria Springfield",
   nav_bar_color = "blue",
   # nav_bar_fixed = TRUE,
   # include_fonts = TRUE,
   # Place side-nav in the beginning of the UI
   material_side_nav(
     fixed = TRUE, 
-    image_source = "img/material.png",
+    image_source = "img/casa.jpg",
     # Place side-nav tabs within side-nav
     material_side_nav_tabs(
       side_nav_tabs = c(
