@@ -1,3 +1,5 @@
+Datos <- read.csv2("Datosfinales.csv")
+
 material_page(
   title = "Bienvenidos a Inmobiliaria Springfield",
   nav_bar_color = "blue",
@@ -23,33 +25,166 @@ material_page(
     tags$br(),
     material_row(
       material_column(
-        width = 6,
+        width = 3,
         material_dropdown(
-          input_id = "Area_State",
-          label = "Location", 
-          choices = sort(unique(HPI_AT_metro$Area_State)),
+          input_id = "cultura",
+          label = "Cultura:", 
+          choices = c(
+            "Indigena" = 1,
+            "Gitano" = 2,
+            "Raizal" = 3,
+            "Palenquero" = 4,
+            "Negro, Afro" = 5,
+            "Ninguno" = 6
+          ),
+          selected = 6,
+          color = "blue"
+        )
+      ),
+      material_column(
+        width = 3,
+        material_switch(
+          input_id = "alcantarillado",
+          label = "Posee alcantarillado:",
+          off_label = "No",
+          on_label = "Si",
           color = "blue"
         )
       ),
       material_column(
         width = 3,
         material_slider(
-          input_id = "from_year",
-          label = "From Year",
-          min_value = 1995,
-          max_value = 2016,
-          initial_value = 1995,
+          input_id = "satisfaccion_seguridad",
+          label = "Satisfacción con la seguridad (0: Insatisfecho, 10: Satisfecho)",
+          min_value = 0,
+          max_value = 10,
+          initial_value = 5,
           color = "blue"
         )
       ),
       material_column(
         width = 3,
+        material_switch(
+          input_id = "humedales",
+          label = "Humedales en el techo o paredes:",
+          off_label = "No",
+          on_label = "Si",
+          color = "blue"
+        )
+      )
+    ),
+    material_row(
+      material_column(
+        width = 3,
+        material_switch(
+          input_id = "conexion_internet",
+          label = "Conexión a internet:",
+          off_label = "No",
+          on_label = "Si",
+          color = "blue"
+        )
+      ),
+      material_column(
+        width = 3,
+        material_dropdown(
+          input_id = "tipo_vivienda",
+          label = "Tipo de vivienda:", 
+          choices = c(
+            "Casa" = 1,
+            "Apartamento" = 2,
+            "Cuarto" = 3,
+            "Vivienda Indígena" = 4,
+            "Otro" = 5
+          ),
+          selected = 1,
+          color = "blue"
+        )
+      ),
+      material_column(
+        width = 3,
+        material_dropdown(
+          input_id = "suficiencia_ingresos",
+          label = "Los ingresos del hogar ...", 
+          choices = c(
+            "No alcanzan para cubrir los gastos" = 1,
+            "Alcanzan sólo para cubrir los gastos" = 2,
+            "Alcanzan para cubrir más de los gastos" = 3
+          ),
+          selected = 2,
+          color = "blue"
+        )
+      ),
+      material_column(
+        width = 3,
+        material_switch(
+          input_id = "sentimiento_seguridad",
+          label = "En el barrio o vereda se siente ...",
+          off_label = "Inseguro",
+          on_label = "Seguro",
+          color = "blue"
+        )
+      )
+    ),
+    material_row(
+      material_column(
+        width = 3,
+        material_dropdown(
+          input_id = "madre_hogar",
+          label = "La madre vive en el hogar:", 
+          choices = c(
+            "Sí" = 1,
+            "No" = 2,
+            "Falleció" = 3
+          ),
+          selected = 1,
+          color = "blue"
+        )
+      ),
+      material_column(
+        width = 3,
+        material_switch(
+          input_id = "leer_escribir",
+          label = "Sabe leer y escribir:",
+          off_label = "No",
+          on_label = "Si",
+          color = "blue"
+        )
+      ),
+      material_column(
+        width = 3,
+        material_switch(
+          input_id = "considera_pobre",
+          label = "Se considera pobre:",
+          off_label = "No",
+          on_label = "Si",
+          color = "blue"
+        )
+      ),
+      material_column(
+        width = 3,
+        material_dropdown(
+          input_id = "condiciones_hogar",
+          label = "Las condiciones de vida del hogar son:", 
+          choices = c(
+            "Muy buenas" = 1,
+            "Buenas" = 2,
+            "Regulares" = 3,
+            "Malas" = 4
+          ),
+          selected = 2,
+          color = "blue"
+        )
+      )
+    ),
+    material_row(
+      material_column(
+        width = 12,
         material_slider(
-          input_id = "to_year",
-          label = "To Year",
-          min_value = 1996,
-          max_value = 2017,
-          initial_value = 2017,
+          input_id = "cantidad_personas",
+          label = "Cantidad de personas en el hogar:",
+          min_value = min(Datos$CANT_PERSONAS_HOGAR),
+          max_value = max(Datos$CANT_PERSONAS_HOGAR),
+          initial_value = 3,
           color = "blue"
         )
       )
