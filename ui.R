@@ -1,4 +1,4 @@
-Datos <- read.csv2("Datosfinales.csv")
+DatosUI <- read.csv2("Datosfinales.csv")
 
 material_page(
   title = "Bienvenidos a Inmobiliaria Springfield",
@@ -30,14 +30,14 @@ material_page(
           input_id = "cultura",
           label = "Cultura:", 
           choices = c(
-            "Indigena" = 1,
-            "Gitano" = 2,
-            "Raizal" = 3,
-            "Palenquero" = 4,
-            "Negro, Afro" = 5,
-            "Ninguno" = 6
+            "Indigena" = "1",
+            #"Gitano" = "2",
+            "Raizal" = "3",
+            "Palenquero" = "4",
+            "Negro, Afro" = "5",
+            "Ninguno" = "6"
           ),
-          selected = 6,
+          selected = "6",
           color = "blue"
         )
       ),
@@ -90,13 +90,13 @@ material_page(
           input_id = "tipo_vivienda",
           label = "Tipo de vivienda:", 
           choices = c(
-            "Casa" = 1,
-            "Apartamento" = 2,
-            "Cuarto" = 3,
-            "Vivienda Indígena" = 4,
-            "Otro" = 5
+            "Casa" = "1",
+            "Apartamento" = "2",
+            "Cuarto" = "3",
+            "Vivienda Indígena" = "4",
+            "Otro" = "5"
           ),
-          selected = 1,
+          selected = "1",
           color = "blue"
         )
       ),
@@ -106,11 +106,11 @@ material_page(
           input_id = "suficiencia_ingresos",
           label = "Los ingresos del hogar ...", 
           choices = c(
-            "No alcanzan para cubrir los gastos" = 1,
-            "Alcanzan sólo para cubrir los gastos" = 2,
-            "Alcanzan para cubrir más de los gastos" = 3
+            "No alcanzan para cubrir los gastos" = "1",
+            "Alcanzan sólo para cubrir los gastos" = "2",
+            "Alcanzan para cubrir más de los gastos" = "3"
           ),
-          selected = 2,
+          selected = "2",
           color = "blue"
         )
       ),
@@ -132,11 +132,11 @@ material_page(
           input_id = "madre_hogar",
           label = "La madre vive en el hogar:", 
           choices = c(
-            "Sí" = 1,
-            "No" = 2,
-            "Falleció" = 3
+            "Sí" = "1",
+            "No" = "2",
+            "Falleció" = "3"
           ),
-          selected = 1,
+          selected = "1",
           color = "blue"
         )
       ),
@@ -166,12 +166,12 @@ material_page(
           input_id = "condiciones_hogar",
           label = "Las condiciones de vida del hogar son:", 
           choices = c(
-            "Muy buenas" = 1,
-            "Buenas" = 2,
-            "Regulares" = 3,
-            "Malas" = 4
+            "Muy buenas" = "1",
+            "Buenas" = "2",
+            "Regulares" = "3",
+            "Malas" = "4"
           ),
-          selected = 2,
+          selected = "2",
           color = "blue"
         )
       )
@@ -182,8 +182,8 @@ material_page(
         material_slider(
           input_id = "cantidad_personas",
           label = "Cantidad de personas en el hogar:",
-          min_value = min(Datos$CANT_PERSONAS_HOGAR),
-          max_value = max(Datos$CANT_PERSONAS_HOGAR),
+          min_value = min(DatosUI$CANT_PERSONAS_HOGAR),
+          max_value = max(DatosUI$CANT_PERSONAS_HOGAR),
           initial_value = 3,
           color = "blue"
         )
@@ -193,9 +193,8 @@ material_page(
       material_column(
         width = 12,
         material_card(
-          title = "Housing Market Trends",
-          plotOutput("housing_plot"),
-          uiOutput("housing_plot_error")
+          title = "Probabilidades por región",
+          textOutput("probabilidades_region")
         )
       )
     )
