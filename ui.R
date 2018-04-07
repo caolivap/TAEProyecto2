@@ -193,10 +193,62 @@ material_page(
       material_column(
         width = 12,
         material_card(
-          title = "Probabilidades por región",
-          textOutput("probabilidades_region")
+          title = "Probabilidades por región"
         )
       )
+    ),
+    material_row(
+      material_column(
+        width = 3,
+        material_card(
+          title = "Amazonía",
+          textOutput("probabilidad_amazonia")
+        )
+      ),
+      material_column(
+        width = 3,
+        material_card(
+          title = "Andina-Oriental",
+          textOutput("probabilidad_andina")
+        )
+      ),
+      material_column(
+        width = 3,
+        material_card(
+          title = "Caribe",
+          textOutput("probabilidad_caribe")
+        )
+      ),
+      material_column(
+        width = 3,
+        material_card(
+          title = "Centro",
+          textOutput("probabilidad_centro")
+        )
+      )
+    ),
+    material_row(
+      material_column(
+        width = 3,
+        material_card(
+          title = "Noroccidente",
+          textOutput("probabilidad_noroccidente")
+        )
+      ),
+      material_column(
+        width = 3,
+        material_card(
+          title = "Orinoquía",
+          textOutput("probabilidad_orinoquia")
+        )
+      ),
+      material_column(
+        width = 3,
+        material_card(
+          title = "Pacífico",
+          textOutput("probabilidad_pacifico")
+        )
+      )     
     )
   ),
   material_side_nav_tab_content(

@@ -2,6 +2,7 @@ library(shiny)
 library(shinymaterial)
 library(tidyverse)
 library(stringr)
+library(shinycssloaders)
 
 #Datos <- read.csv2("Datosfinales.csv")
 

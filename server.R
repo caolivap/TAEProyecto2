@@ -41,7 +41,29 @@ mods <- stepAIC(mod1, trace=F, direction="forward", scope=horizonte)
 
 server <- function(input, output, session) {
   
+  probabilidades <- reactive({
+    #Probabilidad de acuerdo a las caracteristicas de la familia--------
+    c3 <- data.frame(P6080 = input$cultura,
+                     P8520S3 = if (input$alcantarillado) "1" else "2",
+                     P1898 = as.factor(input$satisfaccion_seguridad),
+                     P1891S1= if (input$humedales) "1" else "2",
+                     P1075 = if (input$conexion_internet) "1" else "2",
+                     P1070 = input$tipo_vivienda,
+                     P9090 = input$suficiencia_ingresos,
+                     P9010 = if (input$sentimiento_seguridad) "1" else "2",
+                     P784S4 = "2",
+                     P6083 = input$madre_hogar,
+                     P6160 = if (input$leer_escribir) "1" else "2",
+                     P5230 = if (input$considera_pobre) "1" else "2",
+                     P9030 = input$condiciones_hogar,
+                     CANT_PERSONAS_HOGAR = input$cantidad_personas)
+    
+    
+    ProbList <- predict(mods, c3, type="prob")
+  })
+  
   output$probabilidades_region <- renderText({ 
+    
     
     #Probabilidad de acuerdo a las caracteristicas de la familia--------
     c3 <- data.frame(P6080 = input$cultura,
@@ -59,7 +81,10 @@ server <- function(input, output, session) {
                      P9030 = input$condiciones_hogar,
                      CANT_PERSONAS_HOGAR = input$cantidad_personas)
     
+    
     Prob <- predict(mods, c3, type="prob")
+    
+    
     paste("Amazonia:", round(Prob["Amazonia"]*100, 1),"%", "\n",
           "Andina Oriental:", round(Prob["Andina Oriental"]*100,1),"%", "\n",
           "Caribe:", round(Prob["Caribe"]*100,1),"%", "\n",
@@ -67,6 +92,48 @@ server <- function(input, output, session) {
           "Noroccidente:", round(Prob["Noroccidente"]*100,1),"%", "\n",
           "Orinoquia:", round(Prob["Amazonia"]*100,1),"%", "\n",
           "Pacífico:", round(Prob["Pacífico"]*100,1),"%", "\n")
+  })
+  
+  output$probabilidad_amazonia<- renderText({ 
+      Prob <- probabilidades()
+      paste(round(Prob["Amazonia"]*100, 1),"%")
+    
+  })
+  
+  output$probabilidad_andina<- renderText({ 
+    Prob <- probabilidades()
+    paste(round(Prob["Andina Oriental"]*100, 1),"%")
+    
+  })
+  
+  output$probabilidad_caribe<- renderText({ 
+    Prob <- probabilidades()
+    paste(round(Prob["Caribe"]*100, 1),"%")
+    
+  })
+  
+  output$probabilidad_centro<- renderText({ 
+    Prob <- probabilidades()
+    paste(round(Prob["Centro"]*100, 1),"%")
+    
+  })
+  
+  output$probabilidad_noroccidente<- renderText({ 
+    Prob <- probabilidades()
+    paste(round(Prob["Noroccidente"]*100, 1),"%")
+    
+  })
+  
+  output$probabilidad_orinoquia<- renderText({ 
+    Prob <- probabilidades()
+    paste(round(Prob["Orinoquia"]*100, 1),"%")
+    
+  })
+  
+  output$probabilidad_pacifico<- renderText({ 
+    Prob <- probabilidades()
+    paste(round(Prob["Pacífico"]*100, 1),"%")
+    
   })
   
 }
