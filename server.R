@@ -3,6 +3,9 @@ library(dplyr)
 require(MPV)
 require(MASS)
 
+
+
+
 #Lectura de Datos--------------------
 Datos <- read.csv2("Datosfinales.csv")
 
@@ -94,7 +97,8 @@ server <- function(input, output, session) {
           "Pacífico:", round(Prob["Pacífico"]*100,1),"%", "\n")
   })
   
-  output$probabilidad_amazonia<- renderText({ 
+  output$probabilidad_amazonia<- renderText({
+    
       Prob <- probabilidades()
       paste(round(Prob["Amazonia"]*100, 1),"%")
     

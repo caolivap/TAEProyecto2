@@ -1,8 +1,8 @@
 DatosUI <- read.csv2("Datosfinales.csv")
 
 material_page(
-  title = "Bienvenidos a Inmobiliaria Springfield",
-  nav_bar_color = "blue",
+  title = "Inmobiliaria Springfield",
+  nav_bar_color = "indigo",
   # nav_bar_fixed = TRUE,
   # include_fonts = TRUE,
   # Place side-nav in the beginning of the UI
@@ -12,9 +12,9 @@ material_page(
     # Place side-nav tabs within side-nav
     material_side_nav_tabs(
       side_nav_tabs = c(
-        "Housing Prices" = "housing_prices",
-        "Source Data" = "view_data",
-        "Code" = "code"
+        "Regiones Potenciales" = "housing_prices",
+        "Clientes Potenciales" = "view_data",
+        "Video" = "code"
       ),
       icons = c("insert_chart", "explore", "code")
     )
@@ -23,6 +23,14 @@ material_page(
   material_side_nav_tab_content(
     side_nav_tab_id = "housing_prices",
     tags$br(),
+    material_row(
+      material_column(
+        width = 12,
+        material_card(
+          title = "Ingresando los siguientes datos de la vivienda actual de una familia colombiana podrás ver en qué región es más probable encontrarla y ofrecer nuestros servicios de financiación."
+        )
+      )
+    ),
     material_row(
       material_column(
         width = 3,
@@ -202,28 +210,48 @@ material_page(
         width = 3,
         material_card(
           title = "Amazonía",
-          textOutput("probabilidad_amazonia")
+          textOutput("probabilidad_amazonia"),
+          tags$head(tags$style("#probabilidad_amazonia{
+                                 font-size: 45px;
+                               }"
+                         )
+          )
         )
       ),
       material_column(
         width = 3,
         material_card(
           title = "Andina-Oriental",
-          textOutput("probabilidad_andina")
+          textOutput("probabilidad_andina"),
+          tags$head(tags$style("#probabilidad_andina{
+                                 font-size: 45px;
+                               }"
+          )
+          )
         )
       ),
       material_column(
         width = 3,
         material_card(
           title = "Caribe",
-          textOutput("probabilidad_caribe")
+          textOutput("probabilidad_caribe"),
+          tags$head(tags$style("#probabilidad_caribe{
+                                 font-size: 45px;
+                               }"
+                         )
+          )
         )
       ),
       material_column(
         width = 3,
         material_card(
           title = "Centro",
-          textOutput("probabilidad_centro")
+          textOutput("probabilidad_centro"),
+          tags$head(tags$style("#probabilidad_centro{
+                                 font-size: 45px;
+                               }"
+          )
+          )
         )
       )
     ),
@@ -232,21 +260,36 @@ material_page(
         width = 3,
         material_card(
           title = "Noroccidente",
-          textOutput("probabilidad_noroccidente")
+          textOutput("probabilidad_noroccidente"),
+          tags$head(tags$style("#probabilidad_noroccidente{
+                                 font-size: 45px;
+                               }"
+                         )
+          )
         )
       ),
       material_column(
         width = 3,
         material_card(
           title = "Orinoquía",
-          textOutput("probabilidad_orinoquia")
+          textOutput("probabilidad_orinoquia"),
+          tags$head(tags$style("#probabilidad_orinoquia{
+                                 font-size: 45px;
+                               }"
+                         )
+          )
         )
       ),
       material_column(
         width = 3,
         material_card(
           title = "Pacífico",
-          textOutput("probabilidad_pacifico")
+          textOutput("probabilidad_pacifico"),
+          tags$head(tags$style("#probabilidad_pacifico{
+                                 font-size: 45px;
+                               }"
+                         )
+          )
         )
       )     
     )
