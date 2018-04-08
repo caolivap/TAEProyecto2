@@ -27,7 +27,7 @@ material_page(
       material_column(
         width = 12,
         material_card(
-          title = "Ingresando los siguientes datos de la vivienda actual de una familia colombiana podrás ver en qué región es más probable encontrarla y ofrecer nuestros servicios de financiación."
+          title = "Ingresando los siguientes datos de la vivienda actual de una familia colombiana podrás ver en qué región es más probable encontrarla y ofrecer nuestros servicios de financiación para adquirir vivienda nueva."
         )
       )
     ),
@@ -210,7 +210,7 @@ material_page(
         width = 3,
         material_card(
           title = "Amazonía",
-          textOutput("probabilidad_amazonia"),
+          withSpinner(textOutput("probabilidad_amazonia")),
           tags$head(tags$style("#probabilidad_amazonia{
                                  font-size: 45px;
                                }"
@@ -222,7 +222,7 @@ material_page(
         width = 3,
         material_card(
           title = "Andina-Oriental",
-          textOutput("probabilidad_andina"),
+          withSpinner(textOutput("probabilidad_andina")),
           tags$head(tags$style("#probabilidad_andina{
                                  font-size: 45px;
                                }"
@@ -234,7 +234,7 @@ material_page(
         width = 3,
         material_card(
           title = "Caribe",
-          textOutput("probabilidad_caribe"),
+          withSpinner(textOutput("probabilidad_caribe")),
           tags$head(tags$style("#probabilidad_caribe{
                                  font-size: 45px;
                                }"
@@ -246,7 +246,7 @@ material_page(
         width = 3,
         material_card(
           title = "Centro",
-          textOutput("probabilidad_centro"),
+          withSpinner(textOutput("probabilidad_centro")),
           tags$head(tags$style("#probabilidad_centro{
                                  font-size: 45px;
                                }"
@@ -260,7 +260,7 @@ material_page(
         width = 3,
         material_card(
           title = "Noroccidente",
-          textOutput("probabilidad_noroccidente"),
+          withSpinner(textOutput("probabilidad_noroccidente")),
           tags$head(tags$style("#probabilidad_noroccidente{
                                  font-size: 45px;
                                }"
@@ -272,7 +272,7 @@ material_page(
         width = 3,
         material_card(
           title = "Orinoquía",
-          textOutput("probabilidad_orinoquia"),
+          withSpinner(textOutput("probabilidad_orinoquia")),
           tags$head(tags$style("#probabilidad_orinoquia{
                                  font-size: 45px;
                                }"
@@ -284,7 +284,7 @@ material_page(
         width = 3,
         material_card(
           title = "Pacífico",
-          textOutput("probabilidad_pacifico"),
+          withSpinner(textOutput("probabilidad_pacifico")),
           tags$head(tags$style("#probabilidad_pacifico{
                                  font-size: 45px;
                                }"
