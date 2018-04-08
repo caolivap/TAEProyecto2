@@ -35,27 +35,41 @@ material_page(
       material_column(
         width = 3,
         material_dropdown(
-          input_id = "cultura",
-          label = "Cultura:", 
+          input_id = "tipo_vivienda",
+          label = "Tipo de vivienda actual:", 
           choices = c(
-            "Indigena" = "1",
-            #"Gitano" = "2",
-            "Raizal" = "3",
-            "Palenquero" = "4",
-            "Negro, Afro" = "5",
-            "Ninguno" = "6"
+            "Casa" = "1",
+            "Apartamento" = "2",
+            "Cuarto" = "3",
+            #"Vivienda Indígena" = "4",
+            "Otro" = "5"
           ),
-          selected = "6",
+          selected = "1",
+          color = "blue"
+        )
+      ),
+      material_column(
+        width = 3,
+        material_dropdown(
+          input_id = "condiciones_hogar",
+          label = "Las condiciones de vida del hogar son:", 
+          choices = c(
+            "Muy buenas" = "1",
+            "Buenas" = "2",
+            "Regulares" = "3",
+            "Malas" = "4"
+          ),
+          selected = "2",
           color = "blue"
         )
       ),
       material_column(
         width = 3,
         material_switch(
-          input_id = "alcantarillado",
-          label = "Posee alcantarillado:",
-          off_label = "No",
-          on_label = "Si",
+          input_id = "sentimiento_seguridad",
+          label = "En el barrio o vereda se siente ...",
+          off_label = "Inseguro",
+          on_label = "Seguro",
           color = "blue"
         )
       ),
@@ -69,42 +83,21 @@ material_page(
           initial_value = 5,
           color = "blue"
         )
-      ),
-      material_column(
-        width = 3,
-        material_switch(
-          input_id = "humedales",
-          label = "Humedales en el techo o paredes:",
-          off_label = "No",
-          on_label = "Si",
-          color = "blue"
-        )
       )
+
     ),
     material_row(
       material_column(
         width = 3,
-        material_switch(
-          input_id = "conexion_internet",
-          label = "Conexión a internet:",
-          off_label = "No",
-          on_label = "Si",
-          color = "blue"
-        )
-      ),
-      material_column(
-        width = 3,
         material_dropdown(
-          input_id = "tipo_vivienda",
-          label = "Tipo de vivienda:", 
+          input_id = "suficiencia_ingresos",
+          label = "Los ingresos del hogar ...", 
           choices = c(
-            "Casa" = "1",
-            "Apartamento" = "2",
-            "Cuarto" = "3",
-            "Vivienda Indígena" = "4",
-            "Otro" = "5"
+            "No alcanzan para cubrir los gastos" = "1",
+            "Alcanzan sólo para cubrir los gastos" = "2",
+            "Alcanzan para cubrir más de los gastos" = "3"
           ),
-          selected = "1",
+          selected = "2",
           color = "blue"
         )
       ),
@@ -125,15 +118,43 @@ material_page(
       material_column(
         width = 3,
         material_switch(
-          input_id = "sentimiento_seguridad",
-          label = "En el barrio o vereda se siente ...",
-          off_label = "Inseguro",
-          on_label = "Seguro",
+          input_id = "considera_pobre",
+          label = "Se considera pobre:",
+          off_label = "No",
+          on_label = "Si",
+          color = "blue"
+        )
+      ),
+      material_column(
+        width = 3,
+        material_slider(
+          input_id = "satisfaccion_vida",
+          label = "Satisfacción con la vida actual (0: Insatisfecho, 10: Satisfecho)",
+          min_value = 0,
+          max_value = 10,
+          initial_value = 5,
           color = "blue"
         )
       )
     ),
     material_row(
+      material_column(
+        width = 3,
+        material_dropdown(
+          input_id = "estado_civil",
+          label = "Estado civil:", 
+          choices = c(
+            "No está casado(a) y vive en pareja hace menos de dos años" = "1",
+            "No está casado(a) y vive en pareja hace dos años o más" = "2",
+            "Está viudo(a)" = "3",
+            "Está separado(a) o divorciado(a)" = "4",
+            "Está soltero(a)" = "5",
+            "Está casado(a)" = "6"
+          ),
+          selected = "6",
+          color = "blue"
+        )
+      ),
       material_column(
         width = 3,
         material_dropdown(
@@ -150,36 +171,15 @@ material_page(
       ),
       material_column(
         width = 3,
-        material_switch(
-          input_id = "leer_escribir",
-          label = "Sabe leer y escribir:",
-          off_label = "No",
-          on_label = "Si",
-          color = "blue"
-        )
-      ),
-      material_column(
-        width = 3,
-        material_switch(
-          input_id = "considera_pobre",
-          label = "Se considera pobre:",
-          off_label = "No",
-          on_label = "Si",
-          color = "blue"
-        )
-      ),
-      material_column(
-        width = 3,
         material_dropdown(
-          input_id = "condiciones_hogar",
-          label = "Las condiciones de vida del hogar son:", 
+          input_id = "padre_hogar",
+          label = "El padre vive en el hogar:", 
           choices = c(
-            "Muy buenas" = "1",
-            "Buenas" = "2",
-            "Regulares" = "3",
-            "Malas" = "4"
+            "Sí" = "1",
+            "No" = "2",
+            "Falleció" = "3"
           ),
-          selected = "2",
+          selected = "1",
           color = "blue"
         )
       )
@@ -210,7 +210,8 @@ material_page(
         width = 3,
         material_card(
           title = "Amazonía",
-          withSpinner(textOutput("probabilidad_amazonia")),
+          #withSpinner(textOutput("probabilidad_amazonia")),
+          textOutput("probabilidad_amazonia"),
           tags$head(tags$style("#probabilidad_amazonia{
                                  font-size: 45px;
                                }"
@@ -222,7 +223,8 @@ material_page(
         width = 3,
         material_card(
           title = "Andina-Oriental",
-          withSpinner(textOutput("probabilidad_andina")),
+          #withSpinner(textOutput("probabilidad_andina")),
+          textOutput("probabilidad_andina"),
           tags$head(tags$style("#probabilidad_andina{
                                  font-size: 45px;
                                }"
@@ -234,7 +236,8 @@ material_page(
         width = 3,
         material_card(
           title = "Caribe",
-          withSpinner(textOutput("probabilidad_caribe")),
+          #withSpinner(textOutput("probabilidad_caribe")),
+          textOutput("probabilidad_caribe"),
           tags$head(tags$style("#probabilidad_caribe{
                                  font-size: 45px;
                                }"
@@ -246,7 +249,8 @@ material_page(
         width = 3,
         material_card(
           title = "Centro",
-          withSpinner(textOutput("probabilidad_centro")),
+          #withSpinner(textOutput("probabilidad_centro")),
+          textOutput("probabilidad_centro"),
           tags$head(tags$style("#probabilidad_centro{
                                  font-size: 45px;
                                }"
@@ -260,7 +264,8 @@ material_page(
         width = 3,
         material_card(
           title = "Noroccidente",
-          withSpinner(textOutput("probabilidad_noroccidente")),
+          #withSpinner(textOutput("probabilidad_noroccidente")),
+          textOutput("probabilidad_noroccidente"),
           tags$head(tags$style("#probabilidad_noroccidente{
                                  font-size: 45px;
                                }"
@@ -272,7 +277,8 @@ material_page(
         width = 3,
         material_card(
           title = "Orinoquía",
-          withSpinner(textOutput("probabilidad_orinoquia")),
+          #withSpinner(textOutput("probabilidad_orinoquia")),
+          textOutput("probabilidad_orinoquia"),
           tags$head(tags$style("#probabilidad_orinoquia{
                                  font-size: 45px;
                                }"
@@ -284,7 +290,8 @@ material_page(
         width = 3,
         material_card(
           title = "Pacífico",
-          withSpinner(textOutput("probabilidad_pacifico")),
+          #withSpinner(textOutput("probabilidad_pacifico")),
+          textOutput("probabilidad_pacifico"),
           tags$head(tags$style("#probabilidad_pacifico{
                                  font-size: 45px;
                                }"
