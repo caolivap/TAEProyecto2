@@ -15,11 +15,11 @@ material_page(
     material_side_nav_tabs(
       side_nav_tabs = c(
         "Regiones Potenciales" = "Regiones",
-        "Clientes Potenciales" = "Clientes",
+        #"Clientes Potenciales" = "Clientes",
         "Video" = "Video",
         "Integrantes" = "Integrantes" 
       ),
-      icons = c("insert_chart", "explore", "table", "code")
+      icons = c("insert_chart","table", "code")
     )
   ),
   # Define side-nav tab content
@@ -44,8 +44,8 @@ material_page(
         width = 3,
         tags$label("Tipo de vivienda actual:",
                    style = "font-family: Arial Narrow;
-                   font-size: 16px;
-                   color: #1E90FF;"),
+                   font-size: 20px;
+                   color: green;"),
         material_dropdown(
           input_id = "tipo_vivienda",
           label = "",
@@ -65,8 +65,8 @@ material_page(
         width = 3,
         tags$label("Las condiciones de vida del hogar son:",
                    style = "font-family: Arial Narrow;
-                   font-size: 16px;
-                   color: #1E90FF;"),
+                   font-size: 20px;
+                   color: green;"),
         material_dropdown(
           input_id = "condiciones_hogar",
           label = "", 
@@ -87,8 +87,8 @@ material_page(
           #label = "En el barrio o vereda se siente:",
           tags$label("En el barrio o vereda se siente:",
                      style = "font-family: Arial Narrow;
-                     font-size: 16px;
-                     color: #1E90FF;"),
+                     font-size: 20px;
+                     color: green;"),
           off_label = "Inseguro",
           on_label = "Seguro",
           color = "dodgerblue"
@@ -101,8 +101,8 @@ material_page(
           #label = "Satisfacción con la seguridad (0: Insatisfecho, 10: Satisfecho)",
           tags$label("Satisfacción con la seguridad (0: Insatisfecho, 10: Satisfecho)",
                      style = "font-family: Arial Narrow;
-                     font-size: 16px;
-                     color: #1E90FF;"),
+                     font-size: 20px;
+                     color: green;"),
           min_value = 0,
           max_value = 10,
           initial_value = 5,
@@ -114,76 +114,9 @@ material_page(
     material_row(
       material_column(
         width = 3,
-        tags$label("Los ingresos del hogar:",
-                   style = "font-family: Arial Narrow;
-                     font-size: 16px;
-                     color: tomato;"),
-        material_dropdown(
-          input_id = "suficiencia_ingresos",
-          label = "", 
-          choices = c(
-            "No alcanzan para cubrir los gastos" = "1",
-            "Alcanzan sólo para cubrir los gastos" = "2",
-            "Alcanzan para cubrir más de los gastos" = "3"
-          ),
-          selected = "2",
-          color = "tomato"
-        )
-      ),
-      material_column(
-        width = 3,
-        tags$label("Los ingresos del hogar:",
-                   style = "font-family: Arial Narrow;
-                     font-size: 16px;
-                     color: tomato;"),
-        material_dropdown(
-          input_id = "suficiencia_ingresos",
-          label = "", 
-          choices = c(
-            "No alcanzan para cubrir los gastos" = "1",
-            "Alcanzan sólo para cubrir los gastos" = "2",
-            "Alcanzan para cubrir más de los gastos" = "3"
-          ),
-          selected = "2",
-          color = "tomato"
-        )
-      ),
-      material_column(
-        width = 3,
-        material_switch(
-          input_id = "considera_pobre",
-          #label = "Se considera pobre:",
-          tags$label("Se considera pobre:",
-                     style = "font-family: Arial Narrow;
-                     font-size: 16px;
-                     color: tomato;"),
-          off_label = "No",
-          on_label = "Si",
-          color = "orangered"
-        )
-      ),
-      material_column(
-        width = 3,
-        material_slider(
-          input_id = "satisfaccion_vida",
-          #label = "Satisfacción con la vida actual (0: Insatisfecho, 10: Satisfecho)",
-          tags$label("Satisfacción con la vida actual (0: Insatisfecho, 10: Satisfecho)",
-                     style = "font-family: Arial Narrow;
-                     font-size: 16px;
-                     color: tomato;"),
-          min_value = 0,
-          max_value = 10,
-          initial_value = 5,
-          color = "orangered"
-        )
-      )
-    ),
-    material_row(
-      material_column(
-        width = 3,
         tags$label("Estado civil:",
                    style = "font-family: Arial Narrow;
-                   font-size: 16px;
+                   font-size: 20px;
                    color: green;"),
         material_dropdown(
           input_id = "estado_civil",
@@ -197,14 +130,63 @@ material_page(
             "Está casado(a)" = "6"
           ),
           selected = "6",
-          color = "green"
+          color = "dodgerblue"
+        )
+        ),
+      material_column(
+        width = 3,
+        tags$label("Los ingresos del hogar:",
+                   style = "font-family: Arial Narrow;
+                     font-size: 20px;
+                     color: green;"),
+        material_dropdown(
+          input_id = "suficiencia_ingresos",
+          label = "", 
+          choices = c(
+            "No alcanzan para cubrir los gastos" = "1",
+            "Alcanzan sólo para cubrir los gastos" = "2",
+            "Alcanzan para cubrir más de los gastos" = "3"
+          ),
+          selected = "2",
+          color = "dodgerblue"
         )
       ),
       material_column(
         width = 3,
+        material_switch(
+          input_id = "considera_pobre",
+          #label = "Se considera pobre:",
+          tags$label("Se considera pobre:",
+                     style = "font-family: Arial Narrow;
+                     font-size: 20px;
+                     color: green;"),
+          off_label = "No",
+          on_label = "Si",
+          color = "dodgerblue"
+        )
+      ),
+      material_column(
+        width = 3,
+        material_slider(
+          input_id = "satisfaccion_vida",
+          #label = "Satisfacción con la vida actual (0: Insatisfecho, 10: Satisfecho)",
+          tags$label("Satisfacción con la vida actual (0: Insatisfecho, 10: Satisfecho)",
+                     style = "font-family: Arial Narrow;
+                     font-size: 20px;
+                     color: green;"),
+          min_value = 0,
+          max_value = 10,
+          initial_value = 5,
+          color = "dodgerblue"
+        )
+      )
+    ),
+    material_row(
+      material_column(
+        width = 3,
         tags$label("La madre vive en el hogar:",
                    style = "font-family: Arial Narrow;
-                   font-size: 16px;
+                   font-size: 20px;
                    color: green;"),
         material_dropdown(
           input_id = "madre_hogar",
@@ -215,14 +197,14 @@ material_page(
             "Falleció" = "3"
           ),
           selected = "1",
-          color = "green"
+          color = "dodgerblue"
         )
       ),
       material_column(
         width = 3,
         tags$label("El padre vive en el hogar:",
                    style = "font-family: Arial Narrow;
-                   font-size: 16px;
+                   font-size: 20px;
                    color: green;"),
         material_dropdown(
           input_id = "padre_hogar",
@@ -233,20 +215,24 @@ material_page(
             "Falleció" = "3"
           ),
           selected = "1",
-          color = "green"
+          color = "dodgerblue"
         )
       )
     ),
     material_row(
       material_column(
         width = 12,
+        tags$label("Cantidad de personas en el hogar",
+                   style = "font-family: Arial Narrow;
+                   font-size: 20px;
+                   color: green;"),
         material_slider(
           input_id = "cantidad_personas",
-          label = "Cantidad de personas en el hogar:",
+          label = "",
           min_value = min(DatosUI$CANT_PERSONAS_HOGAR),
           max_value = max(DatosUI$CANT_PERSONAS_HOGAR),
           initial_value = 3,
-          color = "green"
+          color = "dodgerblue"
         )
       )
     ),
@@ -334,7 +320,6 @@ material_page(
           textOutput("probabilidad_orinoquia"),
           tags$head(tags$style("#probabilidad_orinoquia{
                                  font-size: 45px;
-                                 font-size: 4px;
                                }"
                          )
           )
@@ -360,21 +345,6 @@ material_page(
         width = 12,
         material_card(
           withSpinner(leafletOutput("mapa"))
-        )
-      )
-    )
-  ),
-  material_side_nav_tab_content(
-    side_nav_tab_id = "Clientes",
-    tags$br(),
-    material_row(
-      material_column(
-        width = 10,
-        material_card(
-          title = "Source",
-          tags$a(href = "https://www.fhfa.gov/DataTools/Downloads",
-                 target = "_blank",
-                 "Federal Housing Finance Agency (FHFA)")
         )
       )
     )
