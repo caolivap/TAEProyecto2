@@ -3,21 +3,21 @@ DatosUI <- read.csv2("Datosfinales.csv")
 material_page(
   includeCSS("www/app.css"),
   
-  title = "Inmobiliaria Springfield",
+  title = "StatsVision",
   nav_bar_color = "blue",
   # nav_bar_fixed = TRUE,
   # include_fonts = TRUE,
   # Place side-nav in the beginning of the UI
   material_side_nav(
     fixed = TRUE, 
-    image_source = "img/casa.jpg",
+    image_source = "img/logo.jpg",
     # Place side-nav tabs within side-nav
     material_side_nav_tabs(
       side_nav_tabs = c(
         "Regiones Potenciales" = "Regiones",
         #"Clientes Potenciales" = "Clientes",
         "Video" = "Video",
-        "Integrantes" = "Integrantes" 
+        "Creadores" = "Creadores" 
       ),
       icons = c("insert_chart","table", "code")
     )
@@ -30,12 +30,11 @@ material_page(
       material_column(
         width = 12,
         material_card(
-                   tags$h5("Ingresando los siguientes datos de la vivienda actual de una familia colombiana podrás ver en qué región es más probable encontrarla y ofrecer nuestros servicios de financiación para adquirir vivienda nueva.",
+                   tags$h5("Ingresando los siguientes datos de la vivienda actual de una familia colombiana, podrás ver en qué región es más probable encontrar este tipo de familias y ofrecer tus servicios de financiación para adquirir vivienda nueva.",
                            style = "font-family: 'Arial Narrow';
                            font-weight: 500;
                            text-align: center;
                            color: #616263;")
-          #title = "Ingresando los siguientes datos de la vivienda actual de una familia colombiana podrás ver en qué región es más probable encontrarla y ofrecer nuestros servicios de financiación para adquirir vivienda nueva."
         )
       )
     ),
@@ -357,15 +356,15 @@ material_page(
         offset = 1,
         br(),
         #iframe(width = "550", height = "550",url_link="www.youtube.com/embed/dQw4w9WgXcQ")
-        uiOutput("video")
-        #HTML('<iframe width = "550", height = "550",url_link="www.youtube.com/embed/dQw4w9WgXcQ">')
+        #uiOutput("video")
+        HTML(paste0('<iframe width="850" height="500" src="https://www.youtube.com/embed/Oiq-Al1ZdN8','" frameborder="0" allowfullscreen></iframe>'))
         #tags$video(src = "www/video2.mp4", type = "video/mp4", autoplay = NA, controls = NA)
         #git_refs()
       )
     )
   ),
   material_side_nav_tab_content(
-    side_nav_tab_id = "Integrantes",
+    side_nav_tab_id = "Creadores",
     material_row(
       tags$h4("Este aplicativo ha sido desarrollado por: ",
               style = "font-family: 'Arial Narrow';
@@ -382,11 +381,12 @@ material_page(
                         color: dodgerblue;
                         }
       ")),
-      tags$h6("Edwin Alexander Caicedo Chamorro"), br(),
-      tags$h6("Eliana María López Vélez"), br(),
-      tags$h6("Carlos Armando Oliva Paredes"), br(),
-      tags$h6("Juan Pablo Ramirez Echeverri"), br(),
-      tags$h6("Santiago Toro Zuluaga")
+      tags$h6("Edwin Alexander Caicedo Chamorro - eacaicedoc@unal.edu.co"), br(),
+      tags$h6("Eliana María López Vélez - emlopezv@unal.edu.co"), br(),
+      tags$h6("Carlos Armando Oliva Paredes - caolivap@unal.edu.co"), br(),
+      tags$h6("Juan Pablo Ramirez Echeverri - jupramirezec@unal.edu.co"), br(),
+      tags$h6("Santiago Toro Zuluaga - satorozu@unal.edu.co"), br(),
+      tags$p("Contáctanos para saber más o para que nos compartas tus necesidades y prepararte una solución a tu medida")
     )
   )
 )

@@ -10,6 +10,10 @@ library(car)
 library(leaflet)
 library(rgdal)
 require(colorRamps)
+library(nnet)
+library(dplyr)
+require(MPV)
+require(MASS)
 
 
 #Datos <- read.csv2("Datosfinales.csv")

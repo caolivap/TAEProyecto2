@@ -1,7 +1,4 @@
-library(nnet)
-library(dplyr)
-require(MPV)
-require(MASS)
+
 
 
 
@@ -106,10 +103,10 @@ server <- function(input, output, session) {
     
   })
   
-  output$video <- renderUI({
-    click <- input$plot_click
-      HTML(paste0('<iframe width="850" height="500" src="https://www.youtube.com/embed/0yBRgWZMPFY','" frameborder="0" allowfullscreen></iframe>'))
-  })
+  #output$video <- renderUI({
+  #  click <- input$plot_click
+  #    HTML(paste0('<iframe width="850" height="500" src="https://www.youtube.com/embed/Oiq-Al1ZdN8','" frameborder="0" allowfullscreen></iframe>'))
+  #})
   
   output$mapa<- renderLeaflet({ 
     Prob <- as.vector(probabilidades())
