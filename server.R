@@ -106,12 +106,12 @@ server <- function(input, output, session) {
     
   })
   
-<<<<<<< HEAD
+
   output$video <- renderUI({
     click <- input$plot_click
       HTML(paste0('<iframe width="850" height="500" src="https://www.youtube.com/embed/sD9_l3oDOag','" frameborder="0" allowfullscreen></iframe>'))
   })
-=======
+
   output$mapa<- renderLeaflet({ 
     Prob <- as.vector(probabilidades())
     departamentos@data[departamentos@data$region == "AMAZONIA",]$prob2 <- Prob[1]
@@ -144,6 +144,6 @@ server <- function(input, output, session) {
     
   })
   
->>>>>>> a0913b82e5dc3635c923f76f841444053030853a
+
   
 }

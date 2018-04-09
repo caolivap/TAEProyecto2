@@ -334,7 +334,6 @@ material_page(
           textOutput("probabilidad_orinoquia"),
           tags$head(tags$style("#probabilidad_orinoquia{
                                  font-size: 45px;
-                                 font-size: 4px;
                                }"
                          )
           )
