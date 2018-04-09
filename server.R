@@ -102,5 +102,9 @@ server <- function(input, output, session) {
     
   })
   
+  output$video <- renderUI({
+    click <- input$plot_click
+      HTML(paste0('<iframe width="850" height="500" src="https://www.youtube.com/embed/sD9_l3oDOag','" frameborder="0" allowfullscreen></iframe>'))
+  })
   
 }
