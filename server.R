@@ -31,6 +31,10 @@ Datos$P784S4 <- as.factor(Datos$P784S4)
 Datos$P1075 <- as.factor(Datos$P1075)
 Datos$P6090 <- as.factor(Datos$P6090)
 
+#Lectura de base de datos para mapa------------------------------------
+departamentos <- shapefile("deparegion.shp", encoding="UTF-8", use_iconv = TRUE)
+
+
 #Modelo caracteristicas del hogar--------------------
 modcf <- multinom(P6076S1~P1070+P5502+P6081+P6083+P1895+P1898+P9010
                   +P9030+P5230+P9090+CANT_PERSONAS_HOGAR, data=Datos, trace=FALSE)
@@ -99,6 +103,38 @@ server <- function(input, output, session) {
   output$probabilidad_pacifico<- renderText({ 
     Prob <- probabilidades()
     paste(round(Prob["Pacífico"]*100, 1),"%")
+    
+  })
+  
+  output$mapa<- renderLeaflet({ 
+    Prob <- as.vector(probabilidades())
+    departamentos@data[departamentos@data$region == "AMAZONIA",]$prob2 <- Prob[1]
+    departamentos@data[departamentos@data$region == "ANDINA ORIENTAL",]$prob2 <- Prob[2]
+    departamentos@data[departamentos@data$region == "CARIBE",]$prob2 <- Prob[3]
+    departamentos@data[departamentos@data$region == "CENTRO",]$prob2 <- Prob[4]
+    departamentos@data[departamentos@data$region == "NOROCCIDENTE",]$prob2 <- Prob[5]
+    departamentos@data[departamentos@data$region == "ORINOQUIA",]$prob2 <- Prob[6]
+    departamentos@data[departamentos@data$region == "PACIFICA",]$prob2 <- Prob[7]
+    
+    pal <-colorNumeric(palette=cyan2yellow(max(departamentos@data$prob2*100)),
+                       domain=c(0,departamentos@data$prob2*100))
+    popup<-paste(departamentos@data$region,paste("Probabilidad ",
+                                                 round(departamentos@data$prob2*100,digits=2)," %"),sep="<br/>")
+    
+    mapaDepartamentos <- leaflet(departamentos)
+    mapaDepartamentos <- addProviderTiles(mapaDepartamentos, provider="OpenStreetMap.Mapnik")
+    mapaDepartamentos <- addPolygons(mapaDepartamentos,
+                                     popup = popup,
+                                     color=pal(as.integer(departamentos@data$prob2*100)),
+                                     opacity = 0.8,
+                                     fillOpacity = 0.8,
+                                     weight = 1)
+    mapaDepartamentos <-addLegend(mapaDepartamentos,"topright",
+                                  pal=pal,values=departamentos@data$prob2*100, 
+                                  title="Probabilidad",
+                                  opacity = 1)
+    mapaDepartamentos
+    
     
   })
   

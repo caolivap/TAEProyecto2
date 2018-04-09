@@ -3,6 +3,13 @@ library(shinymaterial)
 library(tidyverse)
 library(stringr)
 library(shinycssloaders)
+library(nnet)
+library(raster)
+library(sp)
+library(car)
+library(leaflet)
+library(rgdal)
+require(colorRamps)
 
 #Datos <- read.csv2("Datosfinales.csv")
 
