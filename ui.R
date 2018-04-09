@@ -334,6 +334,7 @@ material_page(
           textOutput("probabilidad_orinoquia"),
           tags$head(tags$style("#probabilidad_orinoquia{
                                  font-size: 45px;
+                                 font-size: 4px;
                                }"
                          )
           )
@@ -352,6 +353,15 @@ material_page(
           )
         )
       )     
+    ),
+    
+    material_row(
+      material_column(
+        width = 12,
+        material_card(
+          withSpinner(leafletOutput("mapa"))
+        )
+      )
     )
   ),
   material_side_nav_tab_content(
