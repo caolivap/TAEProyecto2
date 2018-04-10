@@ -5,7 +5,7 @@ material_page(
   #tags$head(
   #  tags$style(HTML('#calcular{background-color:orange}'))
   #),
-  title = "StatsVision",
+  title = "StatsVision: Predicción de familias acorde a calidad de vida",
   nav_bar_color = "blue",
   # nav_bar_fixed = TRUE,
   # include_fonts = TRUE,
@@ -39,6 +39,11 @@ material_page(
                            color: #616263;")
         )
       )
+    ),
+    material_row(
+      width = 12,
+      align = 'center',
+      "Una vez tengas los datos que deseas observar, haz click en el botón Calcular Probabilidades, luego de un momento te aparecerán las probabilidades encontradas por zona y la ubicación en el mapa de Colombia"
     ),
     material_row(
       material_column(
@@ -260,12 +265,12 @@ material_page(
           #withSpinner(textOutput("probabilidad_amazonia")),
           textOutput("probabilidad_amazonia"),
           tags$head(tags$style("#probabilidad_amazonia{
-                                 font-size: 45px;
+                               font-size: 45px;
                                }"
                          )
           )
-        )
-      ),
+          )
+          ),
       material_column(
         width = 3,
         material_card(
@@ -273,12 +278,12 @@ material_page(
           #withSpinner(textOutput("probabilidad_andina")),
           textOutput("probabilidad_andina"),
           tags$head(tags$style("#probabilidad_andina{
-                                 font-size: 45px;
+                               font-size: 45px;
                                }"
           )
           )
-        )
-      ),
+          )
+          ),
       material_column(
         width = 3,
         material_card(
@@ -286,12 +291,12 @@ material_page(
           #withSpinner(textOutput("probabilidad_caribe")),
           textOutput("probabilidad_caribe"),
           tags$head(tags$style("#probabilidad_caribe{
-                                 font-size: 45px;
+                               font-size: 45px;
                                }"
                          )
           )
-        )
-      ),
+          )
+          ),
       material_column(
         width = 3,
         material_card(
@@ -299,13 +304,13 @@ material_page(
           #withSpinner(textOutput("probabilidad_centro")),
           textOutput("probabilidad_centro"),
           tags$head(tags$style("#probabilidad_centro{
-                                 font-size: 45px;
+                               font-size: 45px;
                                }"
           )
           )
-        )
-      )
-    ),
+          )
+          )
+        ),
     material_row(
       material_column(
         width = 3,
@@ -314,12 +319,12 @@ material_page(
           #withSpinner(textOutput("probabilidad_noroccidente")),
           textOutput("probabilidad_noroccidente"),
           tags$head(tags$style("#probabilidad_noroccidente{
-                                 font-size: 45px;
+                               font-size: 45px;
                                }"
                          )
           )
-        )
-      ),
+          )
+          ),
       material_column(
         width = 3,
         material_card(
@@ -327,12 +332,12 @@ material_page(
           #withSpinner(textOutput("probabilidad_orinoquia")),
           textOutput("probabilidad_orinoquia"),
           tags$head(tags$style("#probabilidad_orinoquia{
-                                 font-size: 45px;
+                               font-size: 45px;
                                }"
                          )
           )
-        )
-      ),
+          )
+          ),
       material_column(
         width = 3,
         material_card(
@@ -340,7 +345,7 @@ material_page(
           #withSpinner(textOutput("probabilidad_pacifico")),
           textOutput("probabilidad_pacifico"),
           tags$head(tags$style("#probabilidad_pacifico{
-                                 font-size: 45px;
+                               font-size: 45px;
                                }"
                          )
           )
@@ -353,6 +358,32 @@ material_page(
         width = 12,
         material_card(
           withSpinner(leafletOutput("mapa"))
+        )
+      )
+    ),
+    material_row(
+      material_column(
+        width = 12,
+        material_card(
+          tags$h6("- Los departamentos que componen la zona Amazonía son: 
+                  Amazonas, Caquetá, Vaupés,
+                  Putumayo, Guainía y Guaviare", br(),
+                  "- Los departamentos que componen la zona Andina-Oriental son: 
+                  Boyacá, Cundinamarca, Santander y Norte de Santander", br(),
+                  "- Los departamentos que componen la zona Caribe son: 
+                  Guajira, Atlántico, Magdalena, Cesar, Sucre, Córdoba, Bolívar y San Andrés", br(),
+                  "- Los departamentos que componen la zona Centro son: 
+                  Tolima y Huila", br(),
+                  "- Los departamentos que componen la zona Noroccidente son: 
+                  Antioquia, Caldas, Risaralda y Quindío", br(),
+                  "- Los departamentos que componen la zona Orinoquía son: 
+                  Meta, Vichada, Casanare y Arauca", br(),
+                  "- Los departamentos que componen la zona Pacífico son: 
+                  Nariño, Cauca, Chocó y Valle del Cauca", br(),
+                  style = "font-family: 'Arial Narrow';
+                           font-weight: 500;
+                           text-align: center;
+                           color: #616263;")
         )
       )
     )
