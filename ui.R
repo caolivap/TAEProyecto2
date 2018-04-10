@@ -2,7 +2,9 @@ DatosUI <- read.csv2("Datosfinales.csv")
 
 material_page(
   includeCSS("www/app.css"),
-  
+  #tags$head(
+  #  tags$style(HTML('#calcular{background-color:orange}'))
+  #),
   title = "StatsVision",
   nav_bar_color = "blue",
   # nav_bar_fixed = TRUE,
@@ -236,13 +238,20 @@ material_page(
       )
     ),
     material_row(
+        align = 'center',
+        actionButton("calcular", "Calcular Probabilidades", 
+                     style="font-family: Arial Narrow; font-size: 25px; color: #FFFFFF; background-color: dodgerblue; border-color: #2e6da4; width: 40%;")
+    ),
+    material_row(
       material_column(
         width = 12,
+        align = 'center',
         material_card(
           title = "Probabilidades por región"
         )
       )
     ),
+    
     material_row(
       material_column(
         width = 3,

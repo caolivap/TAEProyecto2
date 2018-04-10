@@ -40,9 +40,9 @@ modcf <- multinom(P6076S1~P1070+P5502+P6081+P6083+P1895+P1898+P9010
 
 server <- function(input, output, session) {
   
-  probabilidades <- reactive({
+
+  probabilidades <- eventReactive(input$calcular, {
       
-    
     #Probabilidad de acuerdo a las caracteristicas de la familia--------
     c1 <- data.frame(P1070 = input$tipo_vivienda,
                      P5502 = input$estado_civil,
@@ -56,8 +56,6 @@ server <- function(input, output, session) {
                      P9090 = input$suficiencia_ingresos,
                      CANT_PERSONAS_HOGAR = input$cantidad_personas)
                      
-                     
-    
     ProbList <- predict(modcf, c1, type="prob")
     })
   
