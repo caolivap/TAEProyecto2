@@ -5,8 +5,8 @@ account: tae20181
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 317971
-bundleId: 1311107
+bundleId: 1311199
 url: https://tae20181.shinyapps.io/StatsVision/
-when: 1523332869.15217
+when: 1523340566.67451
 asMultiple: FALSE
 asStatic: FALSE

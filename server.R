@@ -28,6 +28,7 @@ Datos$P784S4 <- as.factor(Datos$P784S4)
 Datos$P1075 <- as.factor(Datos$P1075)
 Datos$P6090 <- as.factor(Datos$P6090)
 
+
 #Lectura de base de datos para mapa------------------------------------
 departamentos <- shapefile("deparegion.shp", encoding="UTF-8", use_iconv = TRUE, warnPRJ = FALSE)
 
@@ -39,8 +40,7 @@ modcf <- multinom(P6076S1~P1070+P5502+P6081+P6083+P1895+P1898+P9010
 #### FUNCION SERVER ####
 
 server <- function(input, output, session) {
-  
-
+    
   probabilidades <- eventReactive(input$calcular, {
       
     #Probabilidad de acuerdo a las caracteristicas de la familia--------
@@ -95,12 +95,16 @@ server <- function(input, output, session) {
     
   })
   
-  output$probabilidad_pacifico<- renderText({ 
-    Prob <- probabilidades()
-    paste(round(Prob["Pacífico"]*100, 1),"%")
+  #output$probabilidad_pacifico<- renderText({ 
+  #  Prob <- probabilidades()
+  #  paste(round(Prob["Pacífico"]*100, 1),"%")
+  #})
+  
+  output$probabilidad_pacifico2<- renderText({ 
+    Prob <- as.vector(probabilidades())
+    paste(round((departamentos@data[departamentos@data$region == "PACIFICA",]$prob2 <- Prob[7])*100, 1),"%")
     
   })
-  
   #output$video <- renderUI({
   #  click <- input$plot_click
   #    HTML(paste0('<iframe width="850" height="500" src="https://www.youtube.com/embed/Oiq-Al1ZdN8','" frameborder="0" allowfullscreen></iframe>'))
@@ -115,6 +119,7 @@ server <- function(input, output, session) {
     departamentos@data[departamentos@data$region == "NOROCCIDENTE",]$prob2 <- Prob[5]
     departamentos@data[departamentos@data$region == "ORINOQUIA",]$prob2 <- Prob[6]
     departamentos@data[departamentos@data$region == "PACIFICA",]$prob2 <- Prob[7]
+    
     
     pal <-colorNumeric(palette=cyan2yellow(max(departamentos@data$prob2*100)),
                        domain=c(0,departamentos@data$prob2*100))
@@ -137,6 +142,7 @@ server <- function(input, output, session) {
     
     
   })
+
 
   
 }

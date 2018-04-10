@@ -5,7 +5,7 @@ material_page(
   #tags$head(
   #  tags$style(HTML('#calcular{background-color:orange}'))
   #),
-  title = "StatsVision: Predicción de familias acorde a calidad de vida",
+  title = "StatsVision: Predicción de regiones acorde a calidad de vida de familias",
   nav_bar_color = "blue",
   # nav_bar_fixed = TRUE,
   # include_fonts = TRUE,
@@ -266,6 +266,7 @@ material_page(
           textOutput("probabilidad_amazonia"),
           tags$head(tags$style("#probabilidad_amazonia{
                                font-size: 45px;
+                               text-align: center;
                                }"
                          )
           )
@@ -279,6 +280,7 @@ material_page(
           textOutput("probabilidad_andina"),
           tags$head(tags$style("#probabilidad_andina{
                                font-size: 45px;
+                               text-align: center;
                                }"
           )
           )
@@ -292,6 +294,7 @@ material_page(
           textOutput("probabilidad_caribe"),
           tags$head(tags$style("#probabilidad_caribe{
                                font-size: 45px;
+                               text-align: center;
                                }"
                          )
           )
@@ -305,6 +308,7 @@ material_page(
           textOutput("probabilidad_centro"),
           tags$head(tags$style("#probabilidad_centro{
                                font-size: 45px;
+                               text-align: center;
                                }"
           )
           )
@@ -320,6 +324,7 @@ material_page(
           textOutput("probabilidad_noroccidente"),
           tags$head(tags$style("#probabilidad_noroccidente{
                                font-size: 45px;
+                               text-align: center;
                                }"
                          )
           )
@@ -333,6 +338,7 @@ material_page(
           textOutput("probabilidad_orinoquia"),
           tags$head(tags$style("#probabilidad_orinoquia{
                                font-size: 45px;
+                               text-align: center;
                                }"
                          )
           )
@@ -343,9 +349,10 @@ material_page(
         material_card(
           title = "Pacífico",
           #withSpinner(textOutput("probabilidad_pacifico")),
-          textOutput("probabilidad_pacifico"),
-          tags$head(tags$style("#probabilidad_pacifico{
+          textOutput("probabilidad_pacifico2"),
+          tags$head(tags$style("#probabilidad_pacifico2{
                                font-size: 45px;
+                               text-align: center;
                                }"
                          )
           )
