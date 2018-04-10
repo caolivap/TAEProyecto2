@@ -29,7 +29,7 @@ Datos$P1075 <- as.factor(Datos$P1075)
 Datos$P6090 <- as.factor(Datos$P6090)
 
 #Lectura de base de datos para mapa------------------------------------
-departamentos <- shapefile("deparegion.shp", encoding="UTF-8", use_iconv = TRUE)
+departamentos <- shapefile("deparegion.shp", encoding="UTF-8", use_iconv = TRUE, warnPRJ = FALSE)
 
 
 #Modelo caracteristicas del hogar--------------------
